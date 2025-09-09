@@ -101,10 +101,12 @@ export default function ShapeAnimation() {
         alignItems: "center",
         justifyContent: "center",
         background: "#fff",
+        width: "100%",
+        height: "100%",
       }}
     >
       <svg
-        style={{ width: "50%", height: "auto" }}
+        style={{ width: "80%", height: "auto" }}
         viewBox="0 0 300 300"
         aria-hidden="true"
       >

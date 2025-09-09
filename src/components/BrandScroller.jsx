@@ -1,44 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+import "./BrandScroller.css";
 
-export default function BrandScroller({ children, speed = 50 }) {
-  const scrollerRef = useRef(null);
-
-  useEffect(() => {
-    const scroller = scrollerRef.current;
-
-    // Duplicate content for seamless looping
-    const content = scroller.querySelector(".scroller-content");
-    const clone = content.cloneNode(true);
-    scroller.appendChild(clone);
-
-    const totalWidth = content.offsetWidth;
-
-    // GSAP infinite scroll
-    gsap.to(scroller, {
-      x: -totalWidth,
-      duration: speed,
-      ease: "none",
-      repeat: -1,
-    });
-
-    return () => {
-      gsap.killTweensOf(scroller);
-      scroller.innerHTML = ""; // cleanup
-      scroller.appendChild(content);
-    };
-  }, [speed]);
-
+export default function BrandScroller({ children, speed = 30 }) {
+  // speed = animation duration in seconds
   return (
-    <div className="overflow-hidden w-full border p-4">
+    <div className="brand-scroller overflow-hidden w-full border-l-1 p-4">
       <div
-        ref={scrollerRef}
-        className="flex whitespace-nowrap scroller"
-        style={{ display: "flex" }}
+        className="brand-track flex gap-8"
+        style={{ animationDuration: `${speed}s` }}
       >
-        <div className="scroller-content flex items-center gap-8">
-          {children}
-        </div>
+        <div className="flex items-center gap-12">{children}</div>
+        <div className="flex items-center gap-12">{children}</div>
       </div>
     </div>
   );

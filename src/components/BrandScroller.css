@@ -1,0 +1,24 @@
+.brand-scroller {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left linear infinite;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.brand-scroller img {
+  display: block;
+  flex-shrink: 0;
+}
