@@ -37,16 +37,16 @@ export default function HeroSection() {
         </div>
         <div>
           <BrandScroller speed={20}>
-            <img src="/img/logos/logo-l-1.svg" className="h-8" />
-            <img src="/img/logos/logo-l-2.svg" className="h-8" />
-            <img src="/img/logos/logo-l-3.svg" className="h-8" />
-            <img src="/img/logos/logo-l-4.svg" className="h-8" />
-            <img src="/img/logos/logo-l-5.svg" className="h-8" />
-            <img src="/img/logos/logo-l-6.svg" className="h-8" />
-            <img src="/img/logos/logo-l-9.svg" className="h-8" />
-            <img src="/img/logos/logo-l-11.svg" className="h-8" />
-            <img src="/img/logos/logo-l-12.svg" className="h-8" />
-            <img src="/img/logos/logo-l-14.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-1.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-2.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-3.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-4.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-5.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-6.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-9.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-11.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-12.svg" className="h-8" />
+            <img src="/landing-page/img/logos/logo-l-14.svg" className="h-8" />
           </BrandScroller>
         </div>
       </div>

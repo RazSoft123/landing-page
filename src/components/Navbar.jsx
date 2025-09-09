@@ -51,5 +51,9 @@ export default function Navbar() {
 }
 
 function NavbarItem({ children }) {
-  return <li className="lg:text-lg xl:text-xl">{children}</li>;
+  return (
+    <li className="lg:text-lg xl:text-xl hover:text-red-400 transition-colors duration-200 ease-in">
+      {children}
+    </li>
+  );
 }

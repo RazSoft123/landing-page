@@ -9,7 +9,6 @@ export default function ShapeAnimation() {
   const rectRef = useRef(null);
   const circleRef = useRef(null);
 
-  // path strings (consistent coordinates within viewBox)
   const squareD = "M75 75 H225 V225 H75 Z";
   const rectD = "M50 90 H250 V210 H50 Z";
   const circleD = "M150,75 a75,75 0 1,0 0,150 a75,75 0 1,0 0,-150";
@@ -17,20 +16,16 @@ export default function ShapeAnimation() {
   useEffect(() => {
     const el = shapeRef.current;
 
-    // set the initial 'd' explicitly (helps on resets)
     el.setAttribute("d", squareD);
 
-    // total length of the starting square path
-    const totalLen = Math.ceil(el.getTotalLength()); // integer length
+    const totalLen = Math.ceil(el.getTotalLength());
 
-    // initial visual: a single rounded dot at the path start
     gsap.set(el, {
       stroke: "#000",
       strokeWidth: 3,
       strokeLinecap: "round",
       fill: "transparent",
       attr: { d: squareD },
-      // make a tiny visible dash (1px) followed by a long gap so only a dot shows initially
       strokeDasharray: `1 ${totalLen}`,
       strokeDashoffset: 0,
     });
@@ -40,23 +35,21 @@ export default function ShapeAnimation() {
       defaults: { ease: "power2.inOut" },
     });
 
-    // 1) Grow the tiny dot into the full square outline
     tl.to(el, {
-      strokeDasharray: `${totalLen} 0`, // visible dash becomes the whole path
+      strokeDasharray: `${totalLen} 0`,
       duration: 1.6,
       ease: "power1.inOut",
     });
 
-    // small pause so user sees full outline
     tl.to({}, { duration: 0.35 });
 
     // 2) Morph into a rectangle
     tl.to(el, {
-      morphSVG: rectRef.current, // using hidden rect path
+      morphSVG: rectRef.current,
       duration: 1.1,
     });
 
-    // fill it black and remove stroke (gives the filled rectangle look)
+    // fill it black and remove stroke
     tl.to(el, { fill: "#000", strokeWidth: 0, duration: 0.5, delay: 0.15 });
 
     // 3) Morph rectangle -> circle
@@ -73,9 +66,8 @@ export default function ShapeAnimation() {
       ease: "power1.in",
     });
 
-    // reset to starting state for the next loop:
     tl.set(el, {
-      attr: { d: squareD }, // reset path shape
+      attr: { d: squareD },
     });
 
     tl.set(el, {
@@ -85,7 +77,7 @@ export default function ShapeAnimation() {
       strokeWidth: 6,
       stroke: "#000",
       strokeLinecap: "round",
-      strokeDasharray: `1 ${totalLen}`, // back to the tiny-dot start
+      strokeDasharray: `1 ${totalLen}`,
       strokeDashoffset: 0,
     });
 
@@ -110,10 +102,8 @@ export default function ShapeAnimation() {
         viewBox="0 0 300 300"
         aria-hidden="true"
       >
-        {/* visible shape we animate */}
         <path ref={shapeRef} d={squareD} />
 
-        {/* helper paths for morph targets (kept in DOM, but not visible) */}
         <path ref={rectRef} d={rectD} style={{ visibility: "hidden" }} />
         <path ref={circleRef} d={circleD} style={{ visibility: "hidden" }} />
       </svg>
