@@ -1,5 +1,11 @@
+// import { useEffect } from "react";
 import BrandScroller from "./BrandScroller";
 import ShapeAnimation from "./ShapeAnimation";
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(SplitText);
 
 export default function HeroSection() {
   return (
@@ -12,9 +18,18 @@ export default function HeroSection() {
           <div>
             <div>
               <div className="flex flex-col max-w-[500px]">
-                <span className="text-8xl font-bold">Design</span>
-                <span className="text-8xl font-bold">Transform</span>
-                <span className="text-8xl font-bold">Accelerate</span>
+                {/* <span id="design" className="text-8xl font-bold">
+                  Design
+                </span> */}
+                <Design />
+                {/* <span id="transform" className="text-8xl font-bold">
+                  Transform
+                </span> */}
+                <Transform />
+                {/* <span id="accelerate" className="text-8xl font-bold">
+                  Accelerate
+                </span> */}
+                <Accelerate />
                 <p className="text-2xl mt-8">
                   Redefining user experiences through Behavioural Science & AI
                 </p>
@@ -45,5 +60,72 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function Design() {
+  useGSAP(() => {
+    const splits = SplitText.create("#design", {
+      type: "chars",
+    });
+
+    gsap.from(splits.chars, {
+      duration: 1,
+      y: (i) => (i % 2 ? -50 : 50),
+      autoAlpha: 0,
+      stagger: 0.05,
+    });
+
+    return () => {
+      splits.revert();
+    };
+  }, []);
+
+  return (
+    <span id="design" className="text-8xl font-bold">
+      Design
+    </span>
+  );
+}
+
+function Transform() {
+  useGSAP(() => {
+    const splitChars = SplitText.create("#transform", {
+      type: "chars",
+    });
+
+    gsap.from(splitChars.chars, {
+      x: 200,
+      autoAlpha: 0,
+      stagger: 0.05,
+      duration: 1,
+      delay: 1.5,
+    });
+
+    return () => {
+      splitChars.revert();
+    };
+  }, []);
+
+  return (
+    <span id="transform" className="text-8xl font-bold">
+      Transform
+    </span>
+  );
+}
+
+function Accelerate() {
+  useGSAP(() => {
+    gsap.fromTo(
+      "#accelerate",
+      { autoAlpha: 0, x: 400 }, // start state
+      { autoAlpha: 1, x: 0, duration: 1, delay: 2.5, ease: "elastic.inOut" }
+    );
+  }, []);
+
+  return (
+    <span id="accelerate" className="text-8xl font-bold">
+      Accelerate
+    </span>
   );
 }
