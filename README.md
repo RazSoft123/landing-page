@@ -4,6 +4,13 @@ Landing page design and development for a company website as an assignment.
 
 ---
 
+## Page live at
+
+[Live page urls](https://razsoft123.github.io/landing-page/)
+
+if not work copy the below link
+`https://razsoft123.github.io/landing-page/`
+
 ## 🛠 Tech Stack
 
 - [Vite](https://vitejs.dev/) — Next Generation Frontend Tooling
