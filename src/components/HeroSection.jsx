@@ -18,17 +18,8 @@ export default function HeroSection() {
           <div>
             <div>
               <div className="flex flex-col max-w-[500px]">
-                {/* <span id="design" className="text-8xl font-bold">
-                  Design
-                </span> */}
                 <Design />
-                {/* <span id="transform" className="text-8xl font-bold">
-                  Transform
-                </span> */}
                 <Transform />
-                {/* <span id="accelerate" className="text-8xl font-bold">
-                  Accelerate
-                </span> */}
                 <Accelerate />
                 <p className="text-2xl mt-8">
                   Redefining user experiences through Behavioural Science & AI
